@@ -1,5 +1,8 @@
 <?php
 
+//secure api key
+include __DIR__ . '/../private/config.php';
+
 // Define the log file path
 $log_file = 'request_log.txt';
 
@@ -20,10 +23,6 @@ $log_entry = sprintf(
 
 // Write the log entry to the log file
 file_put_contents($log_file, $log_entry, FILE_APPEND);
-
-// Define allowed origins
-$allowed_referrer = 'https://seo-metatitle-generator-cffc1c.webflow.io';
-$allowed_origin = 'https://seo-metatitle-generator-cffc1c.webflow.io';
 
 // Check the Referer header
 if (isset($_SERVER['HTTP_REFERER'])) {
@@ -53,9 +52,6 @@ header('Access-Control-Allow-Origin: ' . $allowed_origin);
 // Optionally, specify other CORS headers if needed
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
-
-//secure api key
-include __DIR__ . '/../private/config.php';
 
 // Function to generate the meta title using OpenAI API
 function generateMetaTitle($keyword, $type) {
