@@ -1,6 +1,6 @@
 <?php
 
-//secure api key
+//config on a private folder outside the main site directory
 include __DIR__ . '/../private/config.php';
 
 // Define the log file path
