@@ -1,6 +1,8 @@
-# Meta Title Generator API Documentation
+# Meta Title Generator API Documentation and Brief Overview
 
-This API generates SEO-optimized meta titles using OpenAI's GPT-4o model based on provided keywords and content types.
+<p>This API generates SEO-optimized meta titles using OpenAI's GPT-4o model based on provided keywords and content types.</p>
+<p>Brief Overfiew - code uses PHP since I'm more used to PHP and to save time I used the one I'm most familiar with. Theres a 403 and origin and allowed referrer in the config to turn on some basic security and so that bots won't spam the endpoint.</p>
+<p>Challenges - Initial familiarity with WebFlow and OpenAI Security tokens after that I encountered CORS erorr when requesting from the webflow app to the endpoint with was fixed with Access Control Parameters in the endpoint code.</p>
 
 ## Endpoint
 
@@ -8,8 +10,8 @@ POST /path/to/generate_meta_title.php
 
 ## Authentication
 
-This API uses referer and origin-based authentication. Requests must come from an allowed referrer or origin as configured in the server.
-Turn basic 403 security on in the config if you dont want anyone except the allowed domain can request data from the endpoint
+<p>This API uses referer and origin-based authentication. Requests must come from an allowed referrer or origin as configured in the server.</p>
+<p>Turn basic 403 security on in the config if you dont want anyone except the allowed domain can request data from the endpoint</p>
 
 ## Request Headers
 
