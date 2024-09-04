@@ -7,4 +7,4 @@ $openai_api_key = 'APIKEY';
 $allowed_referrer = 'https://seo-metatitle-generator-cffc1c.webflow.io';
 $allowed_origin = 'https://seo-metatitle-generator-cffc1c.webflow.io';
 
-$secuirty403 = false; //bool
+$security403 = false; //bool
