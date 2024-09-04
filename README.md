@@ -75,7 +75,7 @@ fetch('https://your-api-endpoint.com/path/to/script.php', {
 
 ## Notes
 
-- The API uses OpenAI's GPT-4 model to generate meta titles.
+- The API uses OpenAI's GPT-4o model to generate meta titles.
 - All requests are logged with origin, referer, and POST data for monitoring purposes.
 - CORS is enabled for the allowed origin.
 - The API has a character limit for generated titles (approximately 60 tokens).

@@ -24,34 +24,36 @@ $log_entry = sprintf(
 // Write the log entry to the log file
 file_put_contents($log_file, $log_entry, FILE_APPEND);
 
-// Check the Referer header
-if (isset($_SERVER['HTTP_REFERER'])) {
-    $referer_host = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
-    if ($referer_host !== parse_url($allowed_referrer, PHP_URL_HOST)) {
-        header('HTTP/1.1 403 Forbidden');
-        exit('Access denied.');
-    }
-} else {
-    // Check the Origin header if Referer is not set
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
-        $origin = $_SERVER['HTTP_ORIGIN'];
-        if ($origin !== $allowed_origin) {
+//turn on allowed origin and referer security if its value is set
+if($allowed_origin != '' && $allowed_referrer != ''){
+    // Check the Referer header
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        $referer_host = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+        if ($referer_host !== parse_url($allowed_referrer, PHP_URL_HOST)) {
             header('HTTP/1.1 403 Forbidden');
             exit('Access denied.');
         }
     } else {
-        // If neither Referer nor Origin headers are present, deny access
-        header('HTTP/1.1 403 Forbidden');
-        exit('Access denied.');
+        // Check the Origin header if Referer is not set
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
+            $origin = $_SERVER['HTTP_ORIGIN'];
+            if ($origin !== $allowed_origin) {
+                header('HTTP/1.1 403 Forbidden');
+                exit('Access denied.');
+            }
+        } else {
+            // If neither Referer nor Origin headers are present, deny access
+            header('HTTP/1.1 403 Forbidden');
+            exit('Access denied.');
+        }
     }
+    // Allow cross-origin requests from the allowed origin
+    header('Access-Control-Allow-Origin: ' . $allowed_origin);
+
+    // Optionally, specify other CORS headers if needed
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
 }
-
-// Allow cross-origin requests from the allowed origin
-header('Access-Control-Allow-Origin: ' . $allowed_origin);
-
-// Optionally, specify other CORS headers if needed
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
 
 // Function to generate the meta title using OpenAI API
 function generateMetaTitle($keyword, $type) {
