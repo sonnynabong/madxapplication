@@ -25,7 +25,7 @@ $log_entry = sprintf(
 file_put_contents($log_file, $log_entry, FILE_APPEND);
 
 //turn on allowed origin and referer security if its value is set
-if($allowed_origin != '' && $allowed_referrer != ''){
+if($security403 == true){
     // Check the Referer header
     if (isset($_SERVER['HTTP_REFERER'])) {
         $referer_host = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
@@ -47,13 +47,14 @@ if($allowed_origin != '' && $allowed_referrer != ''){
             exit('Access denied.');
         }
     }
-    // Allow cross-origin requests from the allowed origin
-    header('Access-Control-Allow-Origin: ' . $allowed_origin);
-
-    // Optionally, specify other CORS headers if needed
-    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-    header('Access-Control-Allow-Headers: Content-Type');
 }
+
+// Allow cross-origin requests from the allowed origin
+header('Access-Control-Allow-Origin: ' . $allowed_origin);
+
+// Optionally, specify other CORS headers if needed
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 
 // Function to generate the meta title using OpenAI API
 function generateMetaTitle($keyword, $type) {

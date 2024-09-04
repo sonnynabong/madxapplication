@@ -9,6 +9,7 @@ POST /path/to/generate_meta_title.php
 ## Authentication
 
 This API uses referer and origin-based authentication. Requests must come from an allowed referrer or origin as configured in the server.
+Turn basic 403 security on in the config if you dont want anyone except the allowed domain can request data from the endpoint
 
 ## Request Headers
 
