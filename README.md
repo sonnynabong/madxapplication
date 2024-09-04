@@ -1,4 +1,4 @@
-# Meta Title Generator API Documentation and Brief Overview
+# Meta Title Generator API Documentation,  Brief Overview, and Challenges
 
 <p>This API generates SEO-optimized meta titles using OpenAI's GPT-4o model based on provided keywords and content types.</p>
 <p>Brief Overfiew - code uses PHP since I'm more used to PHP and to save time I used the one I'm most familiar with. Theres a 403 and origin and allowed referrer in the config to turn on some basic security and so that bots won't spam the endpoint.</p>
