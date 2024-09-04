@@ -1,6 +1,6 @@
 # Meta Title Generator API Documentation
 
-This API generates SEO-optimized meta titles using OpenAI's GPT-4 model based on provided keywords and content types.
+This API generates SEO-optimized meta titles using OpenAI's GPT-4o model based on provided keywords and content types.
 
 ## Endpoint
 
